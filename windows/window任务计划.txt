@@ -1,0 +1,23 @@
+分析：php只能被用户触发后调用，但执行后会自动退出内存，因此就没有办法准确的定时处理。而国内很多主机是win环境，这样就没办法执行这种脚本了。
+目前，如果需要用PHP定时执行某些任务的话，只想出了以下两个方法：
+1、从win98年代一直至今，而且是从未用过的「计划任务」
+单击“开始”按钮，然后依次选择“程序”→“附件”→“系统工具”→“任务计划”（或者是“设置”→“控制面板”→“任务计划”），启动Windows的任务计划管理程序。
+然后自己往这里随便添加任务吧。
+
+2、写个PHP来后台执行：
+保存位置：E:\eclipse\workspace\zhoz\src\zhoz.php 
+<?php
+ini_set("error_log", "E:\eclipse\workspace\zhoz\src\php_error.log");
+error_log("zhoz.php is execute----------",0);
+ignore_user_abort(); // 后台无阻断运行
+set_time_limit(0); // 一直给我运行
+$zhoz_execute_time = 60; // 运行时间seconds，这里设置成一分钟跑一次。
+
+do {
+   // 这里想执行什么都可以写了
+   error_log("zhoz.php is do !!!!----------",0);
+   sleep($zhoz_execute_time); // 按指定轨道时间运行
+} while (true);
+?>
+
+

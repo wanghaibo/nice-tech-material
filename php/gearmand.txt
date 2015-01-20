@@ -1,0 +1,48 @@
+install Howto
+Download the latest atrpms-repo rpm from
+http://dl.atrpms.net/el5-i386/atrpms/stable/
+Install atrpms-repo rpm:
+# rpm -Uvh atrpms-repo*rpm
+Install boost rpm package:
+# yum install boost
+
+
+
+ tar -xvzf gearmand-1.1.12.tar.gz 
+ 1018  cd gearmand-1.1.12
+ 1019  ./configure 
+ 1020  whereis boost
+ 1021  rpm -qa |grep boost
+ 1022  cat /etc/redhat-release 
+ 1023  uname -a
+ 1024  rpm -Uvh atrpms-repo*rpm
+ 1025  wget 'http://dl.atrpms.net/el5-i386/atrpms/stable/atrpms-repo-5-7.el5.i386.rpm'
+ 1026  rpm -Uvh atrpms-repo*rpm
+ 1027  yum install boost
+ 1028  rpm -qa |grep boost
+ 1029  ls
+ 1030  ./configure 
+ 1031  yum search gperf
+ 1032  yum install gperf.x86_64
+ 1033  ./configure 
+ 1034  make 
+
+
+  rpm -e --allmatches sqlite-3.3.6-7 --nodeps
+
+   1085  ./configure --prefix=/usr/local/sqlite3
+ 1086  rpm -qa sqlite
+ 1087  make 
+ 1088  make install
+
+ 1117  ./configure --prefix=/usr/local/gearman  --with-sqlite3=/usr/local/sqlite3 
+ 1118  make 
+ 1119  make install
+
+
+ 报错:Could not open log file “/usr/local/gearman/var/log/gearmand.log”, from “/usr/local/gearman”, switching to stderr. (No such file or directory)
+解决:
+mkdir -p /usr/local/gearman/var/log/
+cd /usr/local/gearman/var/log/
+touch gearmand.log
+
