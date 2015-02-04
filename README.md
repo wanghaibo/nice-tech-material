@@ -1,1 +1,1 @@
-##collect ppt or keynote which is nice##
+##collect tech material which is nice##
